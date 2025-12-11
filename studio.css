@@ -190,6 +190,19 @@ header {
 .step-item:hover {
     background: var(--bg-hover);
 }
+.step-item.step-active {
+    background: rgba(0, 188, 212, 0.2);
+    border-left: 4px solid var(--primary);
+    animation: pulse-step 1.5s ease-in-out infinite;
+}
+@keyframes pulse-step {
+    0%, 100% {
+        background: rgba(0, 188, 212, 0.2);
+    }
+    50% {
+        background: rgba(0, 188, 212, 0.35);
+    }
+}
 .step-item:last-child {
     border-bottom: none;
 }
@@ -360,16 +373,33 @@ header {
     background: var(--success);
     color: white;
 }
-.play-btn:hover {
+.play-btn:hover:not(:disabled) {
     background: #388e3c;
 }
 .pause-btn {
     background: var(--warning);
     color: white;
 }
+.pause-btn:hover:not(:disabled) {
+    background: #f57c00;
+}
 .stop-btn {
     background: var(--danger);
     color: white;
+}
+.stop-btn:hover:not(:disabled) {
+    background: #d32f2f;
+}
+/* Disabled button states */
+.sequencer-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    filter: grayscale(50%);
+}
+.btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    filter: grayscale(50%);
 }
 footer {
     margin-top: 40px;

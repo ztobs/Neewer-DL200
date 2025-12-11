@@ -175,6 +175,51 @@ function attachStepEvents() {
     });
 }
 
+function highlightCurrentStep(index) {
+    // Remove highlight from all steps
+    document.querySelectorAll('.step-item').forEach(item => {
+        item.classList.remove('step-active');
+    });
+    // Add highlight to current step
+    if (index >= 0 && index < sequencerSteps.length) {
+        const stepItems = document.querySelectorAll('.step-item');
+        if (stepItems[index]) {
+            stepItems[index].classList.add('step-active');
+            // Scroll to the step if needed
+            stepItems[index].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    }
+}
+
+function clearStepHighlight() {
+    document.querySelectorAll('.step-item').forEach(item => {
+        item.classList.remove('step-active');
+    });
+}
+
+function updateSequencerButtons() {
+    const playBtn = document.getElementById('playSequence');
+    const pauseBtn = document.getElementById('pauseSequence');
+    const stopBtn = document.getElementById('stopSequence');
+    
+    if (isPlaying && !isPaused) {
+        // Playing
+        playBtn.disabled = true;
+        pauseBtn.disabled = false;
+        stopBtn.disabled = false;
+    } else if (isPlaying && isPaused) {
+        // Paused
+        playBtn.disabled = false;
+        pauseBtn.disabled = true;
+        stopBtn.disabled = false;
+    } else {
+        // Stopped
+        playBtn.disabled = false;
+        pauseBtn.disabled = true;
+        stopBtn.disabled = true;
+    }
+}
+
 async function playSequencer() {
     if (!BLEDriver.isConnected()) {
         alert('Please connect to the device first.');
@@ -184,15 +229,22 @@ async function playSequencer() {
         alert('No steps to play.');
         return;
     }
-    if (isPlaying) return;
-    isPlaying = true;
-    isPaused = false;
-    document.getElementById('playSequence').disabled = true;
-    document.getElementById('pauseSequence').disabled = false;
-    document.getElementById('stopSequence').disabled = false;
-    currentStepIndex = 0;
+    if (isPlaying && !isPaused) return;
+    
+    // If resuming from pause
+    if (isPlaying && isPaused) {
+        isPaused = false;
+        updateSequencerButtons();
+    } else {
+        // Fresh start
+        isPlaying = true;
+        isPaused = false;
+        currentStepIndex = 0;
+        updateSequencerButtons();
+    }
 
     while (currentStepIndex < sequencerSteps.length && isPlaying && !isPaused) {
+        highlightCurrentStep(currentStepIndex);
         const step = sequencerSteps[currentStepIndex];
         await step.execute();
         currentStepIndex++;
@@ -206,15 +258,12 @@ async function playSequencer() {
 
 function pauseSequencer() {
     isPaused = true;
-    document.getElementById('pauseSequence').disabled = true;
-    document.getElementById('playSequence').disabled = false;
+    updateSequencerButtons();
+    console.log('Sequence paused at step ' + (currentStepIndex + 1));
 }
 
 function resumeSequencer() {
     if (isPlaying && isPaused) {
-        isPaused = false;
-        document.getElementById('pauseSequence').disabled = false;
-        document.getElementById('playSequence').disabled = true;
         playSequencer(); // continue from currentStepIndex
     }
 }
@@ -222,11 +271,12 @@ function resumeSequencer() {
 function stopSequencer() {
     isPlaying = false;
     isPaused = false;
-    document.getElementById('playSequence').disabled = false;
-    document.getElementById('pauseSequence').disabled = true;
-    document.getElementById('stopSequence').disabled = true;
+    currentStepIndex = 0;
+    clearStepHighlight();
+    updateSequencerButtons();
     BLEDriver.stopMotion();
     if (sequencerTimeout) clearTimeout(sequencerTimeout);
+    console.log('Sequence stopped.');
 }
 
 // Presets - now with acceleration settings for professional use
