@@ -18,19 +18,13 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'slow' } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 3000 } },
+                    { type: 'moveRight', params: { duration: 14000 } },
+                    { type: 'wait', params: { duration: 3000 } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 4000 } },
-                    { type: 'wait', params: { duration: 1500 } },
+                    { type: 'moveRight', params: { duration: 14000 } },
+                    { type: 'wait', params: { duration: 4000 } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 3000 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 3500 } },
-                    { type: 'wait', params: { duration: 2000 } },
-                    { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 4000 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 2500 } }
+                    { type: 'moveRight', params: { duration: 13000 } }
                 ]
             },
             {
@@ -42,24 +36,16 @@ const PresetManager = (function() {
                 tags: ['tracking', 'subject', 'smooth'],
                 steps: [
                     { type: 'accel', params: { accel: 'slow' } },
-                    { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveLeft', params: { duration: 2000 } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 3000 } },
+                    { type: 'moveLeft', params: { duration: 10000 } },
+                    { type: 'wait', params: { duration: 2000 } },
                     { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveLeft', params: { duration: 2500 } },
-                    { type: 'wait', params: { duration: 1000 } },
+                    { type: 'moveLeft', params: { duration: 11000 } },
+                    { type: 'wait', params: { duration: 3000 } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 2000 } },
-                    { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveLeft', params: { duration: 3000 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 2000 } },
-                    { type: 'wait', params: { duration: 1500 } },
+                    { type: 'moveLeft', params: { duration: 14000 } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveLeft', params: { duration: 3000 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 2000 } }
+                    { type: 'moveLeft', params: { duration: 10000 } }
                 ]
             },
             {
@@ -72,21 +58,14 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'slow' } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 2500 } },
-                    { type: 'wait', params: { duration: 1000 } },
-                    { type: 'moveRight', params: { duration: 2000 } },
+                    { type: 'moveRight', params: { duration: 9000 } },
+                    { type: 'wait', params: { duration: 6000 } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 1500 } },
-                    { type: 'wait', params: { duration: 2000 } },
+                    { type: 'moveRight', params: { duration: 3000 } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveLeft', params: { duration: 2000 } },
-                    { type: 'wait', params: { duration: 1500 } },
-                    { type: 'moveLeft', params: { duration: 2500 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 1500 } },
-                    { type: 'wait', params: { duration: 1000 } },
-                    { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 3000 } }
+                    { type: 'moveLeft', params: { duration: 10000 } },
+                    { type: 'wait', params: { duration: 5000 } },
+                    { type: 'moveRight', params: { duration: 6000 } }
                 ]
             },
             {
@@ -99,23 +78,15 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'constant' } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 2000 } },
-                    { type: 'wait', params: { duration: 2500 } },
-                    { type: 'moveRight', params: { duration: 1500 } },
-                    { type: 'wait', params: { duration: 2000 } },
+                    { type: 'moveRight', params: { duration: 7000 } },
+                    { type: 'wait', params: { duration: 9000 } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 2000 } },
-                    { type: 'wait', params: { duration: 3000 } },
+                    { type: 'moveRight', params: { duration: 4000 } },
+                    { type: 'wait', params: { duration: 6000 } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 2500 } },
-                    { type: 'wait', params: { duration: 2000 } },
-                    { type: 'moveRight', params: { duration: 1500 } },
-                    { type: 'wait', params: { duration: 2500 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 2000 } },
-                    { type: 'wait', params: { duration: 2000 } },
-                    { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 3000 } }
+                    { type: 'moveRight', params: { duration: 11000 } },
+                    { type: 'wait', params: { duration: 9000 } },
+                    { type: 'moveRight', params: { duration: 6000 } }
                 ]
             }
         ],
@@ -130,24 +101,16 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'slow' } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 2500 } },
-                    { type: 'wait', params: { duration: 4000 } },
+                    { type: 'moveLeft', params: { duration: 5000 } },
+                    { type: 'wait', params: { duration: 8000 } },
                     { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveRight', params: { duration: 2000 } },
+                    { type: 'moveRight', params: { duration: 9000 } },
+                    { type: 'wait', params: { duration: 10000 } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 2500 } },
-                    { type: 'wait', params: { duration: 5000 } },
-                    { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveLeft', params: { duration: 2000 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 2000 } },
-                    { type: 'wait', params: { duration: 3500 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 3000 } },
-                    { type: 'wait', params: { duration: 4500 } },
-                    { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveLeft', params: { duration: 2500 } },
-                    { type: 'wait', params: { duration: 3000 } }
+                    { type: 'moveLeft', params: { duration: 8000 } },
+                    { type: 'wait', params: { duration: 7000 } },
+                    { type: 'moveRight', params: { duration: 6000 } },
+                    { type: 'wait', params: { duration: 9000 } }
                 ]
             },
             {
@@ -160,19 +123,14 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'slow' } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 3000 } },
+                    { type: 'moveRight', params: { duration: 10000 } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 2000 } },
+                    { type: 'moveRight', params: { duration: 8000 } },
+                    { type: 'wait', params: { duration: 4000 } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 4000 } },
-                    { type: 'wait', params: { duration: 2000 } },
-                    { type: 'moveRight', params: { duration: 3000 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 2500 } },
-                    { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 3500 } },
-                    { type: 'wait', params: { duration: 1500 } },
-                    { type: 'moveRight', params: { duration: 2500 } }
+                    { type: 'moveRight', params: { duration: 11000 } },
+                    { type: 'wait', params: { duration: 3000 } },
+                    { type: 'moveRight', params: { duration: 5000 } }
                 ]
             },
             {
@@ -185,21 +143,14 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'slow' } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveLeft', params: { duration: 4000 } },
-                    { type: 'wait', params: { duration: 3000 } },
-                    { type: 'moveLeft', params: { duration: 3000 } },
+                    { type: 'moveLeft', params: { duration: 14000 } },
+                    { type: 'wait', params: { duration: 6000 } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 2000 } },
-                    { type: 'speed', params: { speed: 1 } },
                     { type: 'moveLeft', params: { duration: 4000 } },
-                    { type: 'wait', params: { duration: 4000 } },
-                    { type: 'moveLeft', params: { duration: 3500 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 2500 } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveLeft', params: { duration: 4000 } },
-                    { type: 'wait', params: { duration: 2500 } },
-                    { type: 'moveLeft', params: { duration: 3000 } }
+                    { type: 'moveLeft', params: { duration: 15000 } },
+                    { type: 'wait', params: { duration: 8000 } },
+                    { type: 'moveLeft', params: { duration: 14000 } }
                 ]
             },
             {
@@ -212,23 +163,15 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'slow' } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 2000 } },
-                    { type: 'wait', params: { duration: 3000 } },
+                    { type: 'moveLeft', params: { duration: 4000 } },
+                    { type: 'wait', params: { duration: 6000 } },
                     { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveRight', params: { duration: 2500 } },
-                    { type: 'wait', params: { duration: 2500 } },
+                    { type: 'moveRight', params: { duration: 9000 } },
+                    { type: 'wait', params: { duration: 7000 } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 2000 } },
-                    { type: 'wait', params: { duration: 3500 } },
-                    { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveLeft', params: { duration: 3000 } },
-                    { type: 'wait', params: { duration: 2000 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 2500 } },
-                    { type: 'wait', params: { duration: 3000 } },
-                    { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveRight', params: { duration: 2000 } },
-                    { type: 'wait', params: { duration: 2500 } }
+                    { type: 'moveLeft', params: { duration: 11000 } },
+                    { type: 'wait', params: { duration: 6000 } },
+                    { type: 'moveRight', params: { duration: 4000 } }
                 ]
             }
         ],
@@ -243,23 +186,16 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'slow' } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveLeft', params: { duration: 1500 } },
-                    { type: 'wait', params: { duration: 500 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 1500 } },
+                    { type: 'moveLeft', params: { duration: 4000 } },
                     { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveLeft', params: { duration: 2000 } },
+                    { type: 'moveLeft', params: { duration: 7000 } },
                     { type: 'speed', params: { speed: 4 } },
-                    { type: 'moveLeft', params: { duration: 1500 } },
-                    { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveLeft', params: { duration: 1500 } },
+                    { type: 'moveLeft', params: { duration: 3000 } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 2000 } },
+                    { type: 'moveLeft', params: { duration: 7000 } },
+                    { type: 'wait', params: { duration: 2000 } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveLeft', params: { duration: 1500 } },
-                    { type: 'wait', params: { duration: 1000 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 1500 } }
+                    { type: 'moveLeft', params: { duration: 6000 } }
                 ]
             },
             {
@@ -272,21 +208,13 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'constant' } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 2000 } },
+                    { type: 'moveRight', params: { duration: 9000 } },
+                    { type: 'wait', params: { duration: 2000 } },
                     { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveRight', params: { duration: 2500 } },
-                    { type: 'wait', params: { duration: 1000 } },
+                    { type: 'moveRight', params: { duration: 10000 } },
+                    { type: 'wait', params: { duration: 2000 } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 2000 } },
-                    { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveRight', params: { duration: 2500 } },
-                    { type: 'wait', params: { duration: 1000 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 2000 } },
-                    { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveRight', params: { duration: 2500 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 1500 } }
+                    { type: 'moveRight', params: { duration: 11000 } }
                 ]
             },
             {
@@ -299,23 +227,15 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'slow' } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 1000 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 1000 } },
+                    { type: 'moveRight', params: { duration: 4000 } },
                     { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveRight', params: { duration: 1000 } },
-                    { type: 'speed', params: { speed: 4 } },
-                    { type: 'moveRight', params: { duration: 1500 } },
+                    { type: 'moveRight', params: { duration: 5000 } },
                     { type: 'speed', params: { speed: 5 } },
-                    { type: 'moveRight', params: { duration: 1000 } },
-                    { type: 'speed', params: { speed: 4 } },
-                    { type: 'moveRight', params: { duration: 1000 } },
+                    { type: 'moveRight', params: { duration: 4000 } },
                     { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveRight', params: { duration: 1000 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 1000 } },
+                    { type: 'moveRight', params: { duration: 4000 } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 1500 } }
+                    { type: 'moveRight', params: { duration: 5000 } }
                 ]
             },
             {
@@ -328,22 +248,15 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'slow' } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveLeft', params: { duration: 2000 } },
+                    { type: 'moveLeft', params: { duration: 9000 } },
+                    { type: 'wait', params: { duration: 3000 } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 2500 } },
-                    { type: 'wait', params: { duration: 1500 } },
+                    { type: 'moveLeft', params: { duration: 8000 } },
+                    { type: 'wait', params: { duration: 2000 } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveLeft', params: { duration: 2000 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 2000 } },
-                    { type: 'wait', params: { duration: 1000 } },
-                    { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveLeft', params: { duration: 2500 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 2000 } },
-                    { type: 'wait', params: { duration: 1500 } },
-                    { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveLeft', params: { duration: 2000 } }
+                    { type: 'moveLeft', params: { duration: 9000 } },
+                    { type: 'wait', params: { duration: 3000 } },
+                    { type: 'moveLeft', params: { duration: 4000 } }
                 ]
             },
             {
@@ -356,21 +269,15 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'slow' } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 3000 } },
-                    { type: 'wait', params: { duration: 2000 } },
-                    { type: 'moveRight', params: { duration: 2500 } },
+                    { type: 'moveRight', params: { duration: 11000 } },
+                    { type: 'wait', params: { duration: 4000 } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 2000 } },
+                    { type: 'moveRight', params: { duration: 10000 } },
+                    { type: 'wait', params: { duration: 5000 } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 3000 } },
-                    { type: 'wait', params: { duration: 2500 } },
-                    { type: 'moveLeft', params: { duration: 2500 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 2000 } },
-                    { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveLeft', params: { duration: 3000 } },
-                    { type: 'wait', params: { duration: 2000 } },
-                    { type: 'moveLeft', params: { duration: 2500 } }
+                    { type: 'moveLeft', params: { duration: 9000 } },
+                    { type: 'wait', params: { duration: 4000 } },
+                    { type: 'moveLeft', params: { duration: 11000 } }
                 ]
             }
         ],
@@ -385,22 +292,15 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'slow' } },
                     { type: 'speed', params: { speed: 5 } },
-                    { type: 'moveLeft', params: { duration: 800 } },
-                    { type: 'speed', params: { speed: 4 } },
-                    { type: 'moveLeft', params: { duration: 1000 } },
+                    { type: 'moveLeft', params: { duration: 3600 } },
                     { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveLeft', params: { duration: 1200 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 1500 } },
-                    { type: 'wait', params: { duration: 500 } },
-                    { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveLeft', params: { duration: 2000 } },
+                    { type: 'moveLeft', params: { duration: 5400 } },
                     { type: 'wait', params: { duration: 1000 } },
-                    { type: 'moveLeft', params: { duration: 2500 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 1500 } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveLeft', params: { duration: 2000 } }
+                    { type: 'moveLeft', params: { duration: 9000 } },
+                    { type: 'wait', params: { duration: 2000 } },
+                    { type: 'speed', params: { speed: 2 } },
+                    { type: 'moveLeft', params: { duration: 7000 } }
                 ]
             },
             {
@@ -413,23 +313,15 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'slow' } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 2000 } },
-                    { type: 'wait', params: { duration: 1500 } },
-                    { type: 'moveRight', params: { duration: 1800 } },
+                    { type: 'moveRight', params: { duration: 7600 } },
+                    { type: 'wait', params: { duration: 3000 } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 1500 } },
-                    { type: 'wait', params: { duration: 1000 } },
-                    { type: 'moveRight', params: { duration: 1200 } },
-                    { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveRight', params: { duration: 1000 } },
-                    { type: 'wait', params: { duration: 500 } },
-                    { type: 'moveRight', params: { duration: 800 } },
+                    { type: 'moveRight', params: { duration: 5400 } },
+                    { type: 'wait', params: { duration: 2000 } },
                     { type: 'speed', params: { speed: 4 } },
-                    { type: 'moveRight', params: { duration: 700 } },
-                    { type: 'moveRight', params: { duration: 600 } },
+                    { type: 'moveRight', params: { duration: 5000 } },
                     { type: 'speed', params: { speed: 5 } },
-                    { type: 'moveRight', params: { duration: 500 } },
-                    { type: 'moveRight', params: { duration: 400 } }
+                    { type: 'moveRight', params: { duration: 1800 } }
                 ]
             },
             {
@@ -442,21 +334,14 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'slow' } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveLeft', params: { duration: 3000 } },
-                    { type: 'wait', params: { duration: 2000 } },
-                    { type: 'moveLeft', params: { duration: 2500 } },
+                    { type: 'moveLeft', params: { duration: 11000 } },
+                    { type: 'wait', params: { duration: 4000 } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 2000 } },
+                    { type: 'moveLeft', params: { duration: 4000 } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveLeft', params: { duration: 3000 } },
-                    { type: 'wait', params: { duration: 2500 } },
-                    { type: 'moveLeft', params: { duration: 2500 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 2000 } },
-                    { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveLeft', params: { duration: 3500 } },
-                    { type: 'wait', params: { duration: 2000 } },
-                    { type: 'moveLeft', params: { duration: 2500 } }
+                    { type: 'moveLeft', params: { duration: 11000 } },
+                    { type: 'wait', params: { duration: 5000 } },
+                    { type: 'moveLeft', params: { duration: 12000 } }
                 ]
             },
             {
@@ -469,23 +354,15 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'constant' } },
                     { type: 'speed', params: { speed: 5 } },
-                    { type: 'moveRight', params: { duration: 1200 } },
+                    { type: 'moveRight', params: { duration: 4400 } },
                     { type: 'speed', params: { speed: 4 } },
-                    { type: 'moveLeft', params: { duration: 800 } },
+                    { type: 'moveLeft', params: { duration: 2800 } },
                     { type: 'speed', params: { speed: 5 } },
-                    { type: 'moveRight', params: { duration: 1000 } },
-                    { type: 'speed', params: { speed: 4 } },
-                    { type: 'moveLeft', params: { duration: 600 } },
-                    { type: 'speed', params: { speed: 5 } },
-                    { type: 'moveRight', params: { duration: 1400 } },
+                    { type: 'moveRight', params: { duration: 4800 } },
                     { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveLeft', params: { duration: 1000 } },
+                    { type: 'moveLeft', params: { duration: 2000 } },
                     { type: 'speed', params: { speed: 5 } },
-                    { type: 'moveRight', params: { duration: 800 } },
-                    { type: 'speed', params: { speed: 4 } },
-                    { type: 'moveLeft', params: { duration: 700 } },
-                    { type: 'speed', params: { speed: 5 } },
-                    { type: 'moveRight', params: { duration: 1500 } }
+                    { type: 'moveRight', params: { duration: 5800 } }
                 ]
             },
             {
@@ -498,22 +375,14 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'slow' } },
                     { type: 'speed', params: { speed: 4 } },
-                    { type: 'moveLeft', params: { duration: 1000 } },
+                    { type: 'moveLeft', params: { duration: 4400 } },
+                    { type: 'speed', params: { speed: 2 } },
+                    { type: 'moveLeft', params: { duration: 7000 } },
+                    { type: 'wait', params: { duration: 2000 } },
                     { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveLeft', params: { duration: 1200 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 1500 } },
+                    { type: 'moveLeft', params: { duration: 5400 } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveLeft', params: { duration: 2000 } },
-                    { type: 'wait', params: { duration: 1000 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 1500 } },
-                    { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveLeft', params: { duration: 1200 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 1500 } },
-                    { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveLeft', params: { duration: 2000 } }
+                    { type: 'moveLeft', params: { duration: 7000 } }
                 ]
             }
         ],
@@ -522,13 +391,13 @@ const PresetManager = (function() {
                 id: 'tl_sunrise_sunset',
                 name: 'Sunrise/Sunset',
                 category: 'timelapse',
-                description: 'Ultra-slow 1-hour slide for golden hour',
+                description: 'Ultra-slow 2-hour slide for golden hour',
                 author: 'System',
                 tags: ['golden-hour', 'landscape', 'long'],
                 steps: [
                     { type: 'accel', params: { accel: 'constant' } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 3600000 } }
+                    { type: 'moveRight', params: { duration: 7200000 } }
                 ]
             },
             {
@@ -541,7 +410,7 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'constant' } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveLeft', params: { duration: 1800000 } }
+                    { type: 'moveLeft', params: { duration: 3600000 } }
                 ]
             },
             {
@@ -554,7 +423,7 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'constant' } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 7200000 } }
+                    { type: 'moveRight', params: { duration: 14400000 } }
                 ]
             },
             {
@@ -567,7 +436,7 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'constant' } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveLeft', params: { duration: 5400000 } }
+                    { type: 'moveLeft', params: { duration: 10800000 } }
                 ]
             }
         ],
@@ -582,22 +451,16 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'slow' } },
                     { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveRight', params: { duration: 1200 } },
-                    { type: 'speed', params: { speed: 4 } },
-                    { type: 'moveRight', params: { duration: 1000 } },
-                    { type: 'wait', params: { duration: 500 } },
+                    { type: 'moveRight', params: { duration: 4400 } },
+                    { type: 'wait', params: { duration: 1000 } },
                     { type: 'speed', params: { speed: 5 } },
-                    { type: 'moveLeft', params: { duration: 800 } },
+                    { type: 'moveLeft', params: { duration: 3600 } },
+                    { type: 'wait', params: { duration: 1200 } },
                     { type: 'speed', params: { speed: 4 } },
-                    { type: 'moveLeft', params: { duration: 1000 } },
-                    { type: 'wait', params: { duration: 600 } },
-                    { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveRight', params: { duration: 1200 } },
-                    { type: 'speed', params: { speed: 4 } },
-                    { type: 'moveRight', params: { duration: 800 } },
-                    { type: 'wait', params: { duration: 400 } },
+                    { type: 'moveRight', params: { duration: 4000 } },
+                    { type: 'wait', params: { duration: 800 } },
                     { type: 'speed', params: { speed: 5 } },
-                    { type: 'moveLeft', params: { duration: 1000 } }
+                    { type: 'moveLeft', params: { duration: 2000 } }
                 ]
             },
             {
@@ -610,22 +473,16 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'slow' } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 2000 } },
+                    { type: 'moveLeft', params: { duration: 7000 } },
+                    { type: 'wait', params: { duration: 2000 } },
                     { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveLeft', params: { duration: 1500 } },
-                    { type: 'wait', params: { duration: 1000 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 1800 } },
-                    { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveRight', params: { duration: 1500 } },
-                    { type: 'wait', params: { duration: 800 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 2000 } },
+                    { type: 'moveRight', params: { duration: 6600 } },
+                    { type: 'wait', params: { duration: 1600 } },
                     { type: 'speed', params: { speed: 4 } },
-                    { type: 'moveRight', params: { duration: 1200 } },
-                    { type: 'wait', params: { duration: 1000 } },
+                    { type: 'moveLeft', params: { duration: 6400 } },
+                    { type: 'wait', params: { duration: 2000 } },
                     { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveLeft', params: { duration: 1500 } }
+                    { type: 'moveRight', params: { duration: 3000 } }
                 ]
             },
             {
@@ -638,23 +495,15 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'constant' } },
                     { type: 'speed', params: { speed: 5 } },
-                    { type: 'moveRight', params: { duration: 600 } },
-                    { type: 'moveLeft', params: { duration: 500 } },
-                    { type: 'moveRight', params: { duration: 700 } },
+                    { type: 'moveRight', params: { duration: 3600 } },
                     { type: 'speed', params: { speed: 4 } },
-                    { type: 'moveLeft', params: { duration: 600 } },
+                    { type: 'moveLeft', params: { duration: 2200 } },
                     { type: 'speed', params: { speed: 5 } },
-                    { type: 'moveRight', params: { duration: 800 } },
-                    { type: 'moveLeft', params: { duration: 500 } },
+                    { type: 'moveRight', params: { duration: 3600 } },
                     { type: 'speed', params: { speed: 4 } },
-                    { type: 'moveRight', params: { duration: 700 } },
+                    { type: 'moveLeft', params: { duration: 2800 } },
                     { type: 'speed', params: { speed: 5 } },
-                    { type: 'moveLeft', params: { duration: 600 } },
-                    { type: 'moveRight', params: { duration: 900 } },
-                    { type: 'speed', params: { speed: 4 } },
-                    { type: 'moveLeft', params: { duration: 500 } },
-                    { type: 'speed', params: { speed: 5 } },
-                    { type: 'moveRight', params: { duration: 800 } }
+                    { type: 'moveRight', params: { duration: 3400 } }
                 ]
             },
             {
@@ -667,24 +516,16 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'slow' } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveLeft', params: { duration: 1500 } },
-                    { type: 'wait', params: { duration: 1000 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 1200 } },
-                    { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveLeft', params: { duration: 1000 } },
-                    { type: 'wait', params: { duration: 1500 } },
-                    { type: 'speed', params: { speed: 4 } },
-                    { type: 'moveLeft', params: { duration: 800 } },
-                    { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveLeft', params: { duration: 1000 } },
+                    { type: 'moveLeft', params: { duration: 3000 } },
                     { type: 'wait', params: { duration: 2000 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 1500 } },
                     { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveRight', params: { duration: 1200 } },
+                    { type: 'moveLeft', params: { duration: 4400 } },
+                    { type: 'wait', params: { duration: 3000 } },
+                    { type: 'speed', params: { speed: 4 } },
+                    { type: 'moveLeft', params: { duration: 3600 } },
+                    { type: 'wait', params: { duration: 4000 } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 1500 } }
+                    { type: 'moveRight', params: { duration: 8400 } }
                 ]
             }
         ],
@@ -699,22 +540,15 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'slow' } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 2000 } },
+                    { type: 'moveRight', params: { duration: 9000 } },
+                    { type: 'wait', params: { duration: 3000 } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 2500 } },
-                    { type: 'wait', params: { duration: 1500 } },
+                    { type: 'moveRight', params: { duration: 8000 } },
+                    { type: 'wait', params: { duration: 2000 } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 2000 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 2000 } },
-                    { type: 'wait', params: { duration: 1000 } },
-                    { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 2500 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 2000 } },
-                    { type: 'wait', params: { duration: 1500 } },
-                    { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 2000 } }
+                    { type: 'moveRight', params: { duration: 9000 } },
+                    { type: 'wait', params: { duration: 3000 } },
+                    { type: 'moveRight', params: { duration: 4000 } }
                 ]
             },
             {
@@ -727,22 +561,15 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'constant' } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 2500 } },
+                    { type: 'moveLeft', params: { duration: 9000 } },
+                    { type: 'wait', params: { duration: 3000 } },
                     { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveLeft', params: { duration: 2000 } },
-                    { type: 'wait', params: { duration: 1500 } },
+                    { type: 'moveLeft', params: { duration: 8000 } },
+                    { type: 'wait', params: { duration: 4000 } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 2500 } },
-                    { type: 'wait', params: { duration: 2000 } },
-                    { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveLeft', params: { duration: 2000 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 2500 } },
-                    { type: 'wait', params: { duration: 1500 } },
-                    { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveLeft', params: { duration: 2000 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 2500 } }
+                    { type: 'moveLeft', params: { duration: 10000 } },
+                    { type: 'wait', params: { duration: 3000 } },
+                    { type: 'moveLeft', params: { duration: 9000 } }
                 ]
             },
             {
@@ -755,21 +582,15 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'slow' } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 2500 } },
-                    { type: 'wait', params: { duration: 2000 } },
-                    { type: 'moveRight', params: { duration: 2000 } },
+                    { type: 'moveRight', params: { duration: 9000 } },
+                    { type: 'wait', params: { duration: 4000 } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 1500 } },
-                    { type: 'wait', params: { duration: 1500 } },
+                    { type: 'moveRight', params: { duration: 3000 } },
+                    { type: 'wait', params: { duration: 3000 } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveLeft', params: { duration: 2500 } },
-                    { type: 'wait', params: { duration: 2000 } },
-                    { type: 'moveLeft', params: { duration: 2000 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 1500 } },
-                    { type: 'wait', params: { duration: 1500 } },
-                    { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 2000 } }
+                    { type: 'moveLeft', params: { duration: 9000 } },
+                    { type: 'wait', params: { duration: 4000 } },
+                    { type: 'moveRight', params: { duration: 4000 } }
                 ]
             }
         ],
@@ -784,23 +605,15 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'slow' } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 2000 } },
+                    { type: 'moveRight', params: { duration: 9000 } },
+                    { type: 'wait', params: { duration: 4000 } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveRight', params: { duration: 2500 } },
-                    { type: 'wait', params: { duration: 2000 } },
+                    { type: 'moveRight', params: { duration: 4000 } },
+                    { type: 'wait', params: { duration: 6000 } },
                     { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 2000 } },
-                    { type: 'wait', params: { duration: 3000 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 2500 } },
-                    { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveLeft', params: { duration: 2000 } },
-                    { type: 'wait', params: { duration: 2000 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 2500 } },
-                    { type: 'wait', params: { duration: 2500 } },
-                    { type: 'speed', params: { speed: 1 } },
-                    { type: 'moveRight', params: { duration: 2000 } }
+                    { type: 'moveLeft', params: { duration: 9000 } },
+                    { type: 'wait', params: { duration: 4000 } },
+                    { type: 'moveRight', params: { duration: 4000 } }
                 ]
             },
             {
@@ -813,24 +626,16 @@ const PresetManager = (function() {
                 steps: [
                     { type: 'accel', params: { accel: 'slow' } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 1500 } },
-                    { type: 'wait', params: { duration: 1500 } },
+                    { type: 'moveLeft', params: { duration: 3000 } },
+                    { type: 'wait', params: { duration: 3000 } },
                     { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveRight', params: { duration: 2000 } },
-                    { type: 'wait', params: { duration: 2000 } },
+                    { type: 'moveRight', params: { duration: 8400 } },
+                    { type: 'wait', params: { duration: 4000 } },
                     { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 1800 } },
-                    { type: 'wait', params: { duration: 1500 } },
+                    { type: 'moveLeft', params: { duration: 6600 } },
+                    { type: 'wait', params: { duration: 3000 } },
                     { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveRight', params: { duration: 2200 } },
-                    { type: 'wait', params: { duration: 2000 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 1500 } },
-                    { type: 'wait', params: { duration: 1500 } },
-                    { type: 'speed', params: { speed: 3 } },
-                    { type: 'moveRight', params: { duration: 2000 } },
-                    { type: 'speed', params: { speed: 2 } },
-                    { type: 'moveLeft', params: { duration: 1800 } }
+                    { type: 'moveRight', params: { duration: 7600 } }
                 ]
             }
         ]
