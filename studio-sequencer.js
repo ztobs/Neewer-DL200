@@ -3,10 +3,11 @@
 class Step {
     constructor(type, params) {
         this.id = Date.now() + Math.random();
-        this.type = type; // 'moveLeft', 'moveRight', 'wait', 'speed', 'loop'
-        this.params = params;
+        this.type = type; // 'moveLeft', 'moveRight', 'wait', 'speed', 'accel', 'loop'
+        this.params = params || {};
         this.duration = params.duration || 1000;
         this.speed = params.speed;
+        this.accel = params.accel; // 'constant' or 'slow'
         this.direction = params.direction;
     }
 
@@ -16,6 +17,7 @@ class Step {
             case 'moveRight': return `Move Right for ${this.duration}ms`;
             case 'wait': return `Wait for ${this.duration}ms`;
             case 'speed': return `Set speed to ${this.speed}`;
+            case 'accel': return `Set accel to ${this.accel === 'slow' ? 'Slow (Smooth)' : 'Constant'}`;
             case 'loop': return `Loop ${this.params.count} times`;
             default: return this.type;
         }
@@ -27,6 +29,7 @@ class Step {
             case 'moveRight': return 'fas fa-arrow-right';
             case 'wait': return 'fas fa-clock';
             case 'speed': return 'fas fa-tachometer-alt';
+            case 'accel': return 'fas fa-rocket';
             case 'loop': return 'fas fa-redo';
             default: return 'fas fa-question';
         }
@@ -38,6 +41,7 @@ class Step {
             case 'moveRight': return 'move-right';
             case 'wait': return 'wait';
             case 'speed': return 'speed';
+            case 'accel': return 'accel';
             case 'loop': return 'loop';
             default: return '';
         }
@@ -49,18 +53,23 @@ class Step {
             case 'moveLeft':
                 await BLEDriver.moveLeft();
                 await sleep(this.duration);
-                await BLEDriver.stopMotion();
+                // Use stopMotionWithDecel to account for slow mode deceleration
+                await BLEDriver.stopMotionWithDecel();
                 break;
             case 'moveRight':
                 await BLEDriver.moveRight();
                 await sleep(this.duration);
-                await BLEDriver.stopMotion();
+                // Use stopMotionWithDecel to account for slow mode deceleration
+                await BLEDriver.stopMotionWithDecel();
                 break;
             case 'wait':
                 await sleep(this.duration);
                 break;
             case 'speed':
                 await BLEDriver.setSpeed(this.speed);
+                break;
+            case 'accel':
+                await BLEDriver.setAccel(this.accel);
                 break;
             case 'loop':
                 // Loop handling is done at sequencer level
@@ -220,31 +229,40 @@ function stopSequencer() {
     if (sequencerTimeout) clearTimeout(sequencerTimeout);
 }
 
-// Presets
+// Presets - now with acceleration settings for professional use
 function loadPreset(presetName) {
     clearAllSteps();
     switch(presetName) {
         case 'interview':
+            // Interview mode: smooth, slow acceleration for cinematic back-and-forth
+            addStep(new Step('accel', {accel: 'slow'}));
+            addStep(new Step('speed', {speed: 2}));
             addStep(new Step('moveLeft', {duration: 5000}));
             addStep(new Step('wait', {duration: 2000}));
             addStep(new Step('moveRight', {duration: 5000}));
             addStep(new Step('wait', {duration: 2000}));
             break;
         case 'showcase':
+            // Product showcase: constant speed for consistent motion
+            addStep(new Step('accel', {accel: 'constant'}));
             addStep(new Step('speed', {speed: 3}));
             addStep(new Step('moveRight', {duration: 8000}));
             break;
         case 'dramatic':
+            // Dramatic reveal: smooth acceleration for cinematic effect
+            addStep(new Step('accel', {accel: 'slow'}));
             addStep(new Step('speed', {speed: 1}));
-            addStep(new Step('moveLeft', {duration: 1000}));
+            addStep(new Step('moveLeft', {duration: 2000}));
             addStep(new Step('speed', {speed: 3}));
             addStep(new Step('moveLeft', {duration: 3000}));
             addStep(new Step('speed', {speed: 1}));
-            addStep(new Step('moveLeft', {duration: 1000}));
+            addStep(new Step('moveLeft', {duration: 2000}));
             break;
         case 'timelapse':
+            // Timelapse: constant acceleration at slowest speed
+            addStep(new Step('accel', {accel: 'constant'}));
             addStep(new Step('speed', {speed: 1}));
-            addStep(new Step('moveRight', {duration: 12000}));
+            addStep(new Step('moveRight', {duration: 60000}));
             break;
     }
     console.log(`Loaded preset: ${presetName}`);

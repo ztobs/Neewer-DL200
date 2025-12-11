@@ -46,6 +46,12 @@
                         <button class="btn btn-secondary" id="addSpeed">
                             <i class="fas fa-tachometer-alt"></i> Set Speed
                         </button>
+                        <button class="btn btn-secondary" id="addSlowAccel">
+                            <i class="fas fa-feather"></i> Slow Accel
+                        </button>
+                        <button class="btn btn-secondary" id="addConstantAccel">
+                            <i class="fas fa-equals"></i> Constant Accel
+                        </button>
                         <button class="btn btn-warning" id="addLoop">
                             <i class="fas fa-redo"></i> Loop
                         </button>
@@ -96,6 +102,16 @@
                         <button class="speed-btn" data-speed="4">4</button>
                         <button class="speed-btn active" data-speed="5">5</button>
                     </div>
+                    <h3 style="margin-top: 20px; margin-bottom: 10px; color: var(--primary);"><i class="fas fa-rocket"></i> Acceleration</h3>
+                    <div class="accel-selector" style="display: flex; gap: 10px;">
+                        <button class="btn btn-secondary accel-btn active" id="setConstantAccel" data-accel="constant" style="flex: 1;">
+                            <i class="fas fa-equals"></i> Constant
+                        </button>
+                        <button class="btn btn-secondary accel-btn" id="setSlowAccel" data-accel="slow" style="flex: 1;">
+                            <i class="fas fa-feather"></i> Slow (Smooth)
+                        </button>
+                    </div>
+                    <p style="margin-top: 10px; font-size: 0.85rem; color: var(--text-muted);"><i class="fas fa-info-circle"></i> Slow mode enables smooth acceleration and deceleration for cinematic movements.</p>
                 </div>
             </div>
 
@@ -119,7 +135,7 @@
                                 <i class="fas fa-comments"></i>
                             </div>
                             <div class="preset-title">Interview Mode</div>
-                            <div class="preset-desc">Smooth back‑and‑forth with pauses</div>
+                            <div class="preset-desc">Smooth back-and-forth with pauses</div>
                         </div>
                         <div class="preset-card" data-preset="showcase">
                             <div class="preset-icon">
@@ -139,8 +155,8 @@
                             <div class="preset-icon">
                                 <i class="fas fa-hourglass-half"></i>
                             </div>
-                            <div class="preset-title">Time‑Lapse Slide</div>
-                            <div class="preset-desc">Ultra‑slow movement for time‑lapse</div>
+                            <div class="preset-title">Time-Lapse Slide</div>
+                            <div class="preset-desc">Ultra-slow movement for time-lapse</div>
                         </div>
                     </div>
                 </div>
@@ -151,7 +167,7 @@
                     <ul style="margin-top:15px; padding-left:20px;">
                         <li>Build sequences with multiple steps</li>
                         <li>Save and load presets</li>
-                        <li>Real‑time battery & connection monitoring</li>
+                        <li>Real-time battery & connection monitoring</li>
                         <li>Keyboard shortcuts for quick control</li>
                     </ul>
                 </div>

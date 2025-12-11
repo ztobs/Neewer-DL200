@@ -28,8 +28,13 @@ let bleServer = null;
 let writeCharacteristic = null;
 let isConnected = false;
 let currentSpeed = 5;
+let currentAccel = 'constant'; // 'constant' or 'slow'
 let batteryLevel = null;
 let heartbeatInterval = null;
+
+// Deceleration delay - when in slow mode, the slider doesn't stop immediately
+// This is the estimated time for the slider to come to a complete stop
+const DECELERATION_DELAY_MS = 800;
 
 // Utility
 function sleep(ms) {
@@ -60,6 +65,12 @@ function updateBattery(level) {
     if (batteryText) {
         batteryText.textContent = `Battery: ${level}%`;
     }
+}
+
+function updateAccelUI(accel) {
+    document.querySelectorAll('.accel-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.accel === accel);
+    });
 }
 
 // BLE Communication
@@ -150,6 +161,15 @@ async function stopMotion() {
     await writeCommand(STOPCOMMAND);
 }
 
+// Stop motion and wait for deceleration if in slow mode
+async function stopMotionWithDecel() {
+    await writeCommand(STOPCOMMAND);
+    if (currentAccel === 'slow') {
+        // Wait for deceleration to complete
+        await sleep(DECELERATION_DELAY_MS);
+    }
+}
+
 async function setSpeed(speed) {
     currentSpeed = speed;
     const speedMap = {1: SPEED1, 2: SPEED2, 3: SPEED3, 4: SPEED4, 5: SPEED5};
@@ -161,11 +181,25 @@ async function setSpeed(speed) {
 }
 
 async function setConstantAccel() {
+    currentAccel = 'constant';
     await writeCommand(CONSTANTACCEL);
+    updateAccelUI('constant');
+    log('Acceleration set to: Constant');
 }
 
 async function setSlowAccel() {
+    currentAccel = 'slow';
     await writeCommand(SLOWACCEL);
+    updateAccelUI('slow');
+    log('Acceleration set to: Slow (smooth acceleration/deceleration)');
+}
+
+async function setAccel(accelType) {
+    if (accelType === 'constant') {
+        await setConstantAccel();
+    } else if (accelType === 'slow') {
+        await setSlowAccel();
+    }
 }
 
 async function emergencyStop() {
@@ -181,6 +215,8 @@ async function emergencyStop() {
         await sleep(50);
     }
     await writeCommand(SLOWACCEL);
+    currentAccel = 'slow';
+    updateAccelUI('slow');
     log('Emergency stop complete');
 }
 
@@ -191,11 +227,15 @@ window.BLEDriver = {
     moveLeft,
     moveRight,
     stopMotion,
+    stopMotionWithDecel,
     setSpeed,
     setConstantAccel,
     setSlowAccel,
+    setAccel,
     emergencyStop,
     isConnected: () => isConnected,
     currentSpeed: () => currentSpeed,
-    batteryLevel: () => batteryLevel
+    currentAccel: () => currentAccel,
+    batteryLevel: () => batteryLevel,
+    DECELERATION_DELAY_MS
 };

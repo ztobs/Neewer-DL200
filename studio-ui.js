@@ -16,9 +16,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const addMoveRightBtn = document.getElementById('addMoveRight');
     const addWaitBtn = document.getElementById('addWait');
     const addSpeedBtn = document.getElementById('addSpeed');
+    const addSlowAccelBtn = document.getElementById('addSlowAccel');
+    const addConstantAccelBtn = document.getElementById('addConstantAccel');
     const addLoopBtn = document.getElementById('addLoop');
     const clearAllBtn = document.getElementById('clearAll');
     const presetCards = document.querySelectorAll('.preset-card');
+    
+    // Acceleration controls
+    const setConstantAccelBtn = document.getElementById('setConstantAccel');
+    const setSlowAccelBtn = document.getElementById('setSlowAccel');
 
     // Connection
     connectBtn.addEventListener('click', () => BLEDriver.connect());
@@ -28,8 +34,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Manual controls
     moveLeftBtn.addEventListener('mousedown', () => BLEDriver.moveLeft());
     moveLeftBtn.addEventListener('mouseup', () => BLEDriver.stopMotion());
+    moveLeftBtn.addEventListener('mouseleave', () => BLEDriver.stopMotion());
     moveRightBtn.addEventListener('mousedown', () => BLEDriver.moveRight());
     moveRightBtn.addEventListener('mouseup', () => BLEDriver.stopMotion());
+    moveRightBtn.addEventListener('mouseleave', () => BLEDriver.stopMotion());
     stopManualBtn.addEventListener('click', () => BLEDriver.stopMotion());
 
     // Speed buttons
@@ -39,6 +47,10 @@ document.addEventListener('DOMContentLoaded', function() {
             BLEDriver.setSpeed(speed);
         });
     });
+
+    // Acceleration buttons
+    setConstantAccelBtn.addEventListener('click', () => BLEDriver.setConstantAccel());
+    setSlowAccelBtn.addEventListener('click', () => BLEDriver.setSlowAccel());
 
     // Sequencer controls
     playBtn.addEventListener('click', () => Sequencer.playSequencer());
@@ -69,6 +81,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (speed && speed >= 1 && speed <= 5) {
             Sequencer.addStep(new Sequencer.Step('speed', {speed: parseInt(speed)}));
         }
+    });
+    addSlowAccelBtn.addEventListener('click', () => {
+        Sequencer.addStep(new Sequencer.Step('accel', {accel: 'slow'}));
+    });
+    addConstantAccelBtn.addEventListener('click', () => {
+        Sequencer.addStep(new Sequencer.Step('accel', {accel: 'constant'}));
     });
     addLoopBtn.addEventListener('click', () => {
         const count = prompt('Loop count?', '2');
@@ -101,6 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 BLEDriver.moveRight();
                 break;
             case 'Space':
+                e.preventDefault();
                 BLEDriver.stopMotion();
                 break;
             case 'Digit1':
@@ -119,6 +138,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
             case 'KeyE':
                 BLEDriver.emergencyStop();
+                break;
+            case 'KeyC':
+                // C for Constant acceleration
+                BLEDriver.setConstantAccel();
+                break;
+            case 'KeyF':
+                // F for smooth/slow (Feather) acceleration
+                BLEDriver.setSlowAccel();
                 break;
         }
     });
@@ -139,4 +166,13 @@ document.addEventListener('DOMContentLoaded', function() {
     stopBtn.disabled = true;
 
     console.log('Studio UI initialized.');
+    console.log('Keyboard shortcuts:');
+    console.log('  Arrow keys: Move left/right');
+    console.log('  Space: Stop');
+    console.log('  1-5: Set speed');
+    console.log('  C: Constant acceleration');
+    console.log('  F: Slow (Feather/smooth) acceleration');
+    console.log('  P: Play/Pause sequence');
+    console.log('  S: Stop sequence');
+    console.log('  E: Emergency stop');
 });

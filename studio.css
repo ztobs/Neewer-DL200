@@ -293,6 +293,21 @@ header {
     border-color: var(--primary);
     color: white;
 }
+/* Acceleration buttons */
+.accel-btn {
+    border: 2px solid var(--border);
+    transition: all 0.3s;
+}
+.accel-btn.active {
+    background: var(--primary) !important;
+    border-color: var(--primary) !important;
+    color: white !important;
+}
+.accel-btn:hover:not(.active) {
+    border-color: var(--primary);
+}
+/* Step icon for acceleration */
+.accel { background-color: #e91e63; }
 .presets-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
