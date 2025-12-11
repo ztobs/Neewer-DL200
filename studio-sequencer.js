@@ -84,6 +84,7 @@ let isPlaying = false;
 let isPaused = false;
 let currentStepIndex = 0;
 let sequencerTimeout = null;
+let currentIteration = 0;
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -280,6 +281,13 @@ async function playSequencer() {
     }
     if (isPlaying && !isPaused) return;
     
+    // Determine loop count
+    let loopCount = 1;
+    const lastLoopIndex = sequencerSteps.findLastIndex(s => s.type === 'loop');
+    if (lastLoopIndex !== -1) {
+        loopCount = sequencerSteps[lastLoopIndex].params.count || 1;
+    }
+    
     // If resuming from pause
     if (isPlaying && isPaused) {
         isPaused = false;
@@ -289,21 +297,31 @@ async function playSequencer() {
         isPlaying = true;
         isPaused = false;
         currentStepIndex = 0;
+        currentIteration = 0;
         updateSequencerButtons();
     }
-
-    while (currentStepIndex < sequencerSteps.length && isPlaying && !isPaused) {
-        highlightCurrentStep(currentStepIndex);
-        const step = sequencerSteps[currentStepIndex];
-        await step.execute();
-        await sleep(10); // 10ms delay between steps to ensure device processes timeline requests
-        currentStepIndex++;
+    
+    // Execution
+    while (currentIteration < loopCount && isPlaying && !isPaused) {
+        while (currentStepIndex < sequencerSteps.length && isPlaying && !isPaused) {
+            highlightCurrentStep(currentStepIndex);
+            const step = sequencerSteps[currentStepIndex];
+            if (step.type !== 'loop') {
+                await step.execute();
+            }
+            await sleep(10); // 10ms delay between steps to ensure device processes timeline requests
+            currentStepIndex++;
+        }
+        // End of iteration
+        currentStepIndex = 0;
+        currentIteration++;
+        if (currentIteration < loopCount && isPlaying && !isPaused) {
+            await sleep(100); // brief pause between iterations
+        }
     }
-
-    if (currentStepIndex >= sequencerSteps.length) {
-        stopSequencer();
-        console.log('Sequence completed.');
-    }
+    
+    stopSequencer();
+    console.log('Sequence completed.');
 }
 
 function pauseSequencer() {
@@ -322,6 +340,7 @@ function stopSequencer() {
     isPlaying = false;
     isPaused = false;
     currentStepIndex = 0;
+    currentIteration = 0;
     clearStepHighlight();
     updateSequencerButtons();
     BLEDriver.stopMotion();
