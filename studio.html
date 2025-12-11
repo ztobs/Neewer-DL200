@@ -128,36 +128,36 @@
                 </div>
 
                 <div class="panel presets">
-                    <h2><i class="fas fa-th-large"></i> Professional Presets</h2>
-                    <div class="presets-grid">
-                        <div class="preset-card" data-preset="interview">
-                            <div class="preset-icon">
-                                <i class="fas fa-comments"></i>
-                            </div>
-                            <div class="preset-title">Interview Mode</div>
-                            <div class="preset-desc">Smooth back-and-forth with pauses</div>
+                    <h2><i class="fas fa-th-large"></i> Preset Library</h2>
+                    
+                    <!-- Search and actions bar -->
+                    <div class="preset-actions-bar">
+                        <div class="preset-search">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="presetSearch" placeholder="Search presets...">
                         </div>
-                        <div class="preset-card" data-preset="showcase">
-                            <div class="preset-icon">
-                                <i class="fas fa-gem"></i>
-                            </div>
-                            <div class="preset-title">Product Showcase</div>
-                            <div class="preset-desc">Constant speed pass across product</div>
+                        <div class="preset-action-buttons">
+                            <button class="btn btn-sm btn-secondary" id="savePresetBtn" title="Save current sequence as preset">
+                                <i class="fas fa-save"></i>
+                            </button>
+                            <button class="btn btn-sm btn-secondary" id="importPresetBtn" title="Import preset from file">
+                                <i class="fas fa-file-import"></i>
+                            </button>
+                            <button class="btn btn-sm btn-secondary" id="exportSequenceBtn" title="Export current sequence">
+                                <i class="fas fa-file-export"></i>
+                            </button>
                         </div>
-                        <div class="preset-card" data-preset="dramatic">
-                            <div class="preset-icon">
-                                <i class="fas fa-theater-masks"></i>
-                            </div>
-                            <div class="preset-title">Dramatic Reveal</div>
-                            <div class="preset-desc">Speed ramp up then slow down</div>
-                        </div>
-                        <div class="preset-card" data-preset="timelapse">
-                            <div class="preset-icon">
-                                <i class="fas fa-hourglass-half"></i>
-                            </div>
-                            <div class="preset-title">Time-Lapse Slide</div>
-                            <div class="preset-desc">Ultra-slow movement for time-lapse</div>
-                        </div>
+                    </div>
+                    <input type="file" id="presetFileInput" accept=".json" style="display:none;">
+
+                    <!-- Category tabs -->
+                    <div class="preset-categories" id="presetCategories">
+                        <!-- Categories will be dynamically populated -->
+                    </div>
+
+                    <!-- Presets grid -->
+                    <div class="presets-grid" id="presetsGrid">
+                        <!-- Presets will be dynamically populated -->
                     </div>
                 </div>
 
@@ -181,6 +181,7 @@
 
     <script src="studio-ble.js"></script>
     <script src="studio-sequencer.js"></script>
+    <script src="studio-presets.js"></script>
     <script src="studio-ui.js"></script>
 </body>
 </html>
