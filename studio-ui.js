@@ -177,6 +177,9 @@ let currentCategory = 'documentary';
 let currentSearchQuery = '';
 
 function initPresetUI() {
+    // Initialize presets from loaded modules
+    PresetManager.initializePresets();
+    
     renderCategoryTabs();
     renderPresets(currentCategory);
     bindPresetEvents();
