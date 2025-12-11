@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neewer DL400 Studio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="studio.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-film"></i>
+                <h1>Neewer DL400 Studio</h1>
+            </div>
+            <div class="status-bar">
+                <div class="status-item disconnected">
+                    <div class="status-dot"></div>
+                    <span>Disconnected</span>
+                </div>
+                <div class="status-item battery">
+                    <i class="fas fa-battery-half"></i>
+                    <span>Battery: --%</span>
+                </div>
+                <button class="emergency-stop" id="emergencyStop">
+                    <i class="fas fa-stop-circle"></i> EMERGENCY STOP
+                </button>
+            </div>
+        </header>
+
+        <div class="main-layout">
+            <div class="left-column">
+                <div class="panel timeline">
+                    <h2><i class="fas fa-stream"></i> Timeline Sequencer</h2>
+                    <div class="timeline-controls">
+                        <button class="btn btn-primary" id="addMoveLeft">
+                            <i class="fas fa-arrow-left"></i> Move Left
+                        </button>
+                        <button class="btn btn-primary" id="addMoveRight">
+                            <i class="fas fa-arrow-right"></i> Move Right
+                        </button>
+                        <button class="btn btn-secondary" id="addWait">
+                            <i class="fas fa-clock"></i> Wait
+                        </button>
+                        <button class="btn btn-secondary" id="addSpeed">
+                            <i class="fas fa-tachometer-alt"></i> Set Speed
+                        </button>
+                        <button class="btn btn-warning" id="addLoop">
+                            <i class="fas fa-redo"></i> Loop
+                        </button>
+                        <button class="btn btn-danger" id="clearAll">
+                            <i class="fas fa-trash"></i> Clear All
+                        </button>
+                    </div>
+                    <ul class="steps-list" id="stepsList">
+                        <li class="empty-state">
+                            <i class="fas fa-plus-circle"></i>
+                            <h3>No steps yet</h3>
+                            <p>Add steps to build your camera movement sequence.</p>
+                        </li>
+                    </ul>
+                    <div class="sequencer-controls">
+                        <button class="sequencer-btn play-btn" id="playSequence">
+                            <i class="fas fa-play"></i> Play Sequence
+                        </button>
+                        <button class="sequencer-btn pause-btn" id="pauseSequence" disabled>
+                            <i class="fas fa-pause"></i> Pause
+                        </button>
+                        <button class="sequencer-btn stop-btn" id="stopSequence" disabled>
+                            <i class="fas fa-stop"></i> Stop
+                        </button>
+                    </div>
+                </div>
+
+                <div class="panel manual-controls">
+                    <h2><i class="fas fa-gamepad"></i> Manual Controls</h2>
+                    <div class="control-grid">
+                        <div class="control-btn" id="moveLeftBtn">
+                            <i class="fas fa-arrow-left"></i>
+                            <span>Move Left</span>
+                        </div>
+                        <div class="control-btn" id="stopBtn">
+                            <i class="fas fa-stop"></i>
+                            <span>Stop</span>
+                        </div>
+                        <div class="control-btn" id="moveRightBtn">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Move Right</span>
+                        </div>
+                    </div>
+                    <div class="speed-selector">
+                        <button class="speed-btn" data-speed="1">1</button>
+                        <button class="speed-btn" data-speed="2">2</button>
+                        <button class="speed-btn" data-speed="3">3</button>
+                        <button class="speed-btn" data-speed="4">4</button>
+                        <button class="speed-btn active" data-speed="5">5</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="panel connection">
+                    <h2><i class="fas fa-bluetooth-b"></i> Connection</h2>
+                    <p>Connect to your Neewer DL400 via Bluetooth.</p>
+                    <button class="btn btn-primary" id="connectBtn" style="width:100%; margin-top:15px;">
+                        <i class="fas fa-link"></i> Connect to Device
+                    </button>
+                    <button class="btn btn-secondary" id="disconnectBtn" style="width:100%; margin-top:10px;" disabled>
+                        <i class="fas fa-unlink"></i> Disconnect
+                    </button>
+                </div>
+
+                <div class="panel presets">
+                    <h2><i class="fas fa-th-large"></i> Professional Presets</h2>
+                    <div class="presets-grid">
+                        <div class="preset-card" data-preset="interview">
+                            <div class="preset-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <div class="preset-title">Interview Mode</div>
+                            <div class="preset-desc">Smooth back‑and‑forth with pauses</div>
+                        </div>
+                        <div class="preset-card" data-preset="showcase">
+                            <div class="preset-icon">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                            <div class="preset-title">Product Showcase</div>
+                            <div class="preset-desc">Constant speed pass across product</div>
+                        </div>
+                        <div class="preset-card" data-preset="dramatic">
+                            <div class="preset-icon">
+                                <i class="fas fa-theater-masks"></i>
+                            </div>
+                            <div class="preset-title">Dramatic Reveal</div>
+                            <div class="preset-desc">Speed ramp up then slow down</div>
+                        </div>
+                        <div class="preset-card" data-preset="timelapse">
+                            <div class="preset-icon">
+                                <i class="fas fa-hourglass-half"></i>
+                            </div>
+                            <div class="preset-title">Time‑Lapse Slide</div>
+                            <div class="preset-desc">Ultra‑slow movement for time‑lapse</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel info">
+                    <h2><i class="fas fa-info-circle"></i> Info</h2>
+                    <p>This studio interface allows you to create complex automated camera movements for professional videography.</p>
+                    <ul style="margin-top:15px; padding-left:20px;">
+                        <li>Build sequences with multiple steps</li>
+                        <li>Save and load presets</li>
+                        <li>Real‑time battery & connection monitoring</li>
+                        <li>Keyboard shortcuts for quick control</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Neewer DL400 Studio &copy; 2025 | Use with Chrome/Edge (Web Bluetooth)</p>
+        </footer>
+    </div>
+
+    <script src="studio-ble.js"></script>
+    <script src="studio-sequencer.js"></script>
+    <script src="studio-ui.js"></script>
+</body>
+</html>
