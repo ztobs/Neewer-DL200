@@ -99,6 +99,48 @@ function removeStep(id) {
     renderSteps();
 }
 
+function editStep(id) {
+    const step = sequencerSteps.find(s => s.id == id);
+    if (!step) return;
+    
+    switch(step.type) {
+        case 'moveLeft':
+        case 'moveRight':
+        case 'wait':
+            const duration = prompt(`Duration in milliseconds? (current: ${step.duration}ms)`, step.duration);
+            if (duration && !isNaN(duration)) {
+                step.duration = parseInt(duration);
+                step.params.duration = step.duration;
+            }
+            break;
+        case 'speed':
+            const speed = prompt(`Speed (1-5)? (current: ${step.speed})`, step.speed);
+            if (speed && speed >= 1 && speed <= 5) {
+                step.speed = parseInt(speed);
+                step.params.speed = step.speed;
+            }
+            break;
+        case 'accel':
+            const current = step.accel === 'slow' ? 'Slow (Smooth)' : 'Constant';
+            const accel = prompt(`Acceleration type? Enter 'constant' or 'slow' (current: ${current})`, step.accel);
+            if (accel && (accel === 'constant' || accel === 'slow')) {
+                step.accel = accel;
+                step.params.accel = step.accel;
+            }
+            break;
+        case 'loop':
+            const count = prompt(`Loop count? (current: ${step.params.count})`, step.params.count);
+            if (count && !isNaN(count)) {
+                step.params.count = parseInt(count);
+            }
+            break;
+        default:
+            alert('Cannot edit this step type.');
+            return;
+    }
+    renderSteps();
+}
+
 function clearAllSteps() {
     sequencerSteps = [];
     renderSteps();
@@ -137,6 +179,7 @@ function renderSteps() {
                 <div class="step-actions">
                     <button class="step-up" title="Move up"><i class="fas fa-arrow-up"></i></button>
                     <button class="step-down" title="Move down"><i class="fas fa-arrow-down"></i></button>
+                    <button class="step-edit" title="Edit"><i class="fas fa-edit"></i></button>
                     <button class="step-remove" title="Remove"><i class="fas fa-times"></i></button>
                 </div>
             </div>
@@ -165,6 +208,12 @@ function attachStepEvents() {
                 [sequencerSteps[index], sequencerSteps[index+1]] = [sequencerSteps[index+1], sequencerSteps[index]];
                 renderSteps();
             }
+        });
+    });
+    document.querySelectorAll('.step-edit').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const id = e.target.closest('.step-item').dataset.id;
+            editStep(id);
         });
     });
     document.querySelectorAll('.step-remove').forEach(btn => {
