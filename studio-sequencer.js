@@ -84,7 +84,6 @@ let isPlaying = false;
 let isPaused = false;
 let currentStepIndex = 0;
 let sequencerTimeout = null;
-let currentIteration = 0;
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -281,13 +280,6 @@ async function playSequencer() {
     }
     if (isPlaying && !isPaused) return;
     
-    // Determine loop count
-    let loopCount = 1;
-    const lastLoopIndex = sequencerSteps.findLastIndex(s => s.type === 'loop');
-    if (lastLoopIndex !== -1) {
-        loopCount = sequencerSteps[lastLoopIndex].params.count || 1;
-    }
-    
     // If resuming from pause
     if (isPlaying && isPaused) {
         isPaused = false;
@@ -297,29 +289,51 @@ async function playSequencer() {
         isPlaying = true;
         isPaused = false;
         currentStepIndex = 0;
-        currentIteration = 0;
         updateSequencerButtons();
     }
-    
-    // Execution
-    while (currentIteration < loopCount && isPlaying && !isPaused) {
-        while (currentStepIndex < sequencerSteps.length && isPlaying && !isPaused) {
-            highlightCurrentStep(currentStepIndex);
-            const step = sequencerSteps[currentStepIndex];
-            if (step.type !== 'loop') {
-                await step.execute();
+
+    while (currentStepIndex < sequencerSteps.length && isPlaying && !isPaused) {
+        highlightCurrentStep(currentStepIndex);
+        const step = sequencerSteps[currentStepIndex];
+        if (step.type === 'loop') {
+            const loopCount = step.params.count || 1;
+            const bodyLength = currentStepIndex;
+            const loopElement = document.querySelectorAll('.step-item')[currentStepIndex];
+            let progressDiv = loopElement.querySelector('.loop-progress');
+            if (!progressDiv) {
+                progressDiv = document.createElement('div');
+                progressDiv.className = 'loop-progress';
+                progressDiv.style.cssText = 'background: rgba(255,255,0,0.2); padding: 5px; margin: 5px 0; border-radius: 3px; text-align: center; font-weight: bold; color: #333; box-sizing: border-box;';
+                const actions = loopElement.querySelector('.step-actions');
+                actions.parentNode.insertBefore(progressDiv, actions);
             }
-            await sleep(10); // 10ms delay between steps to ensure device processes timeline requests
+            let currentRep = 1;
+            progressDiv.textContent = `Loop repetition ${currentRep} of ${loopCount}`;
+            for(let rep = 1; rep < loopCount; rep++) {
+                currentRep = rep + 1;
+                progressDiv.textContent = `Loop repetition ${currentRep} of ${loopCount}`;
+                for(let i = 0; i < bodyLength; i++) {
+                    if (!isPlaying || isPaused) {
+                        return;
+                    }
+                    highlightCurrentStep(i);
+                    await sequencerSteps[i].execute();
+                    await sleep(10);
+                }
+                if (!isPlaying || isPaused) {
+                    return;
+                }
+                await sleep(100);
+            }
+            if (progressDiv) progressDiv.remove();
             currentStepIndex++;
+            continue;
         }
-        // End of iteration
-        currentStepIndex = 0;
-        currentIteration++;
-        if (currentIteration < loopCount && isPlaying && !isPaused) {
-            await sleep(100); // brief pause between iterations
-        }
+        await step.execute();
+        await sleep(10); // 10ms delay between steps to ensure device processes timeline requests
+        currentStepIndex++;
     }
-    
+
     stopSequencer();
     console.log('Sequence completed.');
 }
@@ -340,11 +354,12 @@ function stopSequencer() {
     isPlaying = false;
     isPaused = false;
     currentStepIndex = 0;
-    currentIteration = 0;
     clearStepHighlight();
     updateSequencerButtons();
     BLEDriver.stopMotion();
     if (sequencerTimeout) clearTimeout(sequencerTimeout);
+    // Clean up any loop progress divs
+    document.querySelectorAll('.loop-progress').forEach(div => div.remove());
     console.log('Sequence stopped.');
 }
 
