@@ -247,6 +247,7 @@ async function playSequencer() {
         highlightCurrentStep(currentStepIndex);
         const step = sequencerSteps[currentStepIndex];
         await step.execute();
+        await sleep(10); // 10ms delay between steps to ensure device processes timeline requests
         currentStepIndex++;
     }
 
