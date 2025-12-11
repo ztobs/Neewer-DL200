@@ -1,4 +1,5 @@
 // Documentary presets for Neewer DL400 Studio
+// Documentary requires slow, deliberate movements with ample dwell time for audience contemplation
 const documentaryPresets = [
     {
         id: 'doc_establishing',
@@ -10,13 +11,13 @@ const documentaryPresets = [
         steps: [
             { type: 'accel', params: { accel: 'slow' } },
             { type: 'speed', params: { speed: 1 } },
-            { type: 'moveRight', params: { duration: 14000 } },
-            { type: 'wait', params: { duration: 3000 } },
+            { type: 'moveRight', params: { duration: 18000 } },  // Very long establishing pan
+            { type: 'wait', params: { duration: 4000 } },        // Pause for audience to absorb
             { type: 'speed', params: { speed: 2 } },
-            { type: 'moveRight', params: { duration: 14000 } },
-            { type: 'wait', params: { duration: 4000 } },
+            { type: 'moveRight', params: { duration: 16000 } },  // Continued smooth coverage
+            { type: 'wait', params: { duration: 5000 } },        // Extended contemplation pause
             { type: 'speed', params: { speed: 1 } },
-            { type: 'moveRight', params: { duration: 13000 } }
+            { type: 'moveRight', params: { duration: 14000 } }   // Final slow sweep
         ]
     },
     {
@@ -29,15 +30,15 @@ const documentaryPresets = [
         steps: [
             { type: 'accel', params: { accel: 'slow' } },
             { type: 'speed', params: { speed: 2 } },
-            { type: 'moveLeft', params: { duration: 10000 } },
-            { type: 'wait', params: { duration: 2000 } },
+            { type: 'moveLeft', params: { duration: 12000 } },   // Initial tracking
+            { type: 'wait', params: { duration: 3000 } },        // Subject anticipation pause
             { type: 'speed', params: { speed: 3 } },
-            { type: 'moveLeft', params: { duration: 11000 } },
-            { type: 'wait', params: { duration: 3000 } },
+            { type: 'moveLeft', params: { duration: 14000 } },   // Following movement
+            { type: 'wait', params: { duration: 4000 } },        // Extended dwell for subject focus
             { type: 'speed', params: { speed: 2 } },
-            { type: 'moveLeft', params: { duration: 14000 } },
+            { type: 'moveLeft', params: { duration: 16000 } },   // Final smooth follow
             { type: 'speed', params: { speed: 1 } },
-            { type: 'moveLeft', params: { duration: 10000 } }
+            { type: 'moveLeft', params: { duration: 10000 } }    // Graceful slow end
         ]
     },
     {
@@ -50,14 +51,14 @@ const documentaryPresets = [
         steps: [
             { type: 'accel', params: { accel: 'slow' } },
             { type: 'speed', params: { speed: 1 } },
-            { type: 'moveRight', params: { duration: 9000 } },
-            { type: 'wait', params: { duration: 6000 } },
+            { type: 'moveRight', params: { duration: 10000 } },  // Slow detail reveal
+            { type: 'wait', params: { duration: 8000 } },        // Long pause for detail examination
             { type: 'speed', params: { speed: 2 } },
-            { type: 'moveRight', params: { duration: 3000 } },
+            { type: 'moveRight', params: { duration: 4000 } },   // Brief continued reveal
             { type: 'speed', params: { speed: 1 } },
-            { type: 'moveLeft', params: { duration: 10000 } },
-            { type: 'wait', params: { duration: 5000 } },
-            { type: 'moveRight', params: { duration: 6000 } }
+            { type: 'moveLeft', params: { duration: 12000 } },   // Return pass for re-examination
+            { type: 'wait', params: { duration: 6000 } },        // Final contemplation
+            { type: 'moveRight', params: { duration: 8000 } }    // Closing reveal
         ]
     },
     {
@@ -70,15 +71,15 @@ const documentaryPresets = [
         steps: [
             { type: 'accel', params: { accel: 'constant' } },
             { type: 'speed', params: { speed: 1 } },
-            { type: 'moveRight', params: { duration: 7000 } },
-            { type: 'wait', params: { duration: 9000 } },
+            { type: 'moveRight', params: { duration: 8000 } },   // Initial evidence scan
+            { type: 'wait', params: { duration: 12000 } },       // Long pause for reading/examination
             { type: 'speed', params: { speed: 2 } },
-            { type: 'moveRight', params: { duration: 4000 } },
-            { type: 'wait', params: { duration: 6000 } },
+            { type: 'moveRight', params: { duration: 5000 } },   // Move to next evidence
+            { type: 'wait', params: { duration: 10000 } },       // Extended examination time
             { type: 'speed', params: { speed: 1 } },
-            { type: 'moveRight', params: { duration: 11000 } },
-            { type: 'wait', params: { duration: 9000 } },
-            { type: 'moveRight', params: { duration: 6000 } }
+            { type: 'moveRight', params: { duration: 12000 } },  // Careful methodical pan
+            { type: 'wait', params: { duration: 12000 } },       // Final evidence dwell
+            { type: 'moveRight', params: { duration: 6000 } }    // Closing
         ]
     }
 ];
