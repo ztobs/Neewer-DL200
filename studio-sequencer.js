@@ -95,7 +95,7 @@ function addStep(step) {
 }
 
 function removeStep(id) {
-    sequencerSteps = sequencerSteps.filter(s => s.id !== id);
+    sequencerSteps = sequencerSteps.filter(s => s.id != id);
     renderSteps();
 }
 
