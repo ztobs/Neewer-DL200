@@ -21,16 +21,22 @@
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+}
 body {
     background-color: var(--bg-dark);
     color: var(--text);
     line-height: 1.6;
-    overflow-x: hidden;
 }
 .container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 20px;
+    width: 100%;
+    overflow-x: hidden;
 }
 header {
     display: flex;
@@ -115,6 +121,9 @@ header {
     padding: 25px;
     box-shadow: var(--shadow);
     margin-bottom: 25px;
+    overflow: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 .panel h2 {
     margin-bottom: 20px;
@@ -133,7 +142,8 @@ header {
 }
 .timeline-controls {
     display: flex;
-    gap: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
     margin-bottom: 20px;
 }
 .btn {
@@ -306,6 +316,30 @@ header {
     border-color: var(--primary);
     color: white;
 }
+/* Acceleration section */
+.accel-heading {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: var(--primary);
+}
+
+.accel-selector {
+    display: flex;
+    gap: 10px;
+}
+
+.accel-selector .accel-btn {
+    flex: 1;
+}
+
+.accel-hint {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
 /* Acceleration buttons */
 .accel-btn {
     border: 2px solid var(--border);
@@ -786,5 +820,427 @@ footer {
 @media (max-width: 1100px) {
     .main-layout {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Mobile responsive styles */
+@media (max-width: 600px) {
+    /* Force all elements to respect viewport */
+    *:not(i):not(.fas):not(.fab):not(.far) {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    .container {
+        padding: 10px;
+        max-width: 100%;
+        width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .left-column,
+    .right-column {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+    
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 0;
+    }
+    
+    .logo {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .logo h1 {
+        font-size: 1.3rem;
+        word-break: break-word;
+    }
+    
+    .logo i {
+        font-size: 1.6rem;
+    }
+    
+    .status-bar {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+    }
+    
+    .status-item {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+    
+    .status-item span {
+        white-space: nowrap;
+    }
+    
+    .emergency-stop {
+        padding: 10px 15px;
+        font-size: 0.85rem;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .main-layout {
+        gap: 15px;
+    }
+    
+    .panel {
+        padding: 12px;
+        margin-bottom: 12px;
+    }
+    
+    .panel p {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    .panel h2 {
+        font-size: 1rem;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+    }
+    
+    .panel h2 i {
+        font-size: 1.1rem;
+    }
+    
+    .timeline {
+        min-height: auto;
+    }
+    
+    .timeline-controls {
+        gap: 6px;
+    }
+    
+    .timeline-controls .btn {
+        padding: 8px 10px;
+        font-size: 0.75rem;
+        flex: 1 1 calc(50% - 6px);
+        min-width: 0;
+        justify-content: center;
+        white-space: nowrap;
+    }
+    
+    .timeline-controls .btn i {
+        font-size: 0.85rem;
+    }
+    
+    .btn {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .sequencer-controls {
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 20px;
+    }
+    
+    .sequencer-btn {
+        padding: 10px 8px;
+        font-size: 0.8rem;
+        flex: 1 1 30%;
+        min-width: 0;
+        justify-content: center;
+    }
+    
+    .sequencer-btn i {
+        font-size: 0.9rem;
+    }
+    
+    /* Hide button text on small screens, show only icons */
+    .sequencer-btn span,
+    .sequencer-btn:not(:has(i))::after {
+        display: inline;
+    }
+    
+    .manual-controls .control-grid {
+        gap: 8px;
+        width: 100%;
+    }
+    
+    .control-btn {
+        padding: 12px 6px;
+        min-width: 0;
+    }
+    
+    .control-btn i {
+        font-size: 1.3rem;
+        margin-bottom: 6px;
+    }
+    
+    .control-btn span {
+        font-size: 0.7rem;
+    }
+    
+    .speed-selector {
+        gap: 4px;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    
+    .speed-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 0.85rem;
+        flex-shrink: 0;
+    }
+    
+    .accel-selector {
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+    
+    .accel-btn {
+        font-size: 0.85rem !important;
+        width: 100% !important;
+        flex: none !important;
+    }
+    
+    .accel-hint {
+        font-size: 0.8rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+    
+    .preset-actions-bar {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .preset-search {
+        width: 100%;
+    }
+    
+    .preset-search input {
+        font-size: 0.9rem;
+    }
+    
+    .preset-action-buttons {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .preset-categories {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 10px;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 -12px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    
+    .category-tab {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+    
+    .presets-grid {
+        max-height: 280px;
+    }
+    
+    .preset-card {
+        padding: 10px;
+    }
+    
+    .preset-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 0.95rem;
+    }
+    
+    .preset-info {
+        overflow: hidden;
+    }
+    
+    .preset-title {
+        font-size: 0.9rem;
+    }
+    
+    .preset-desc {
+        font-size: 0.8rem;
+    }
+    
+    .preset-meta {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    
+    .preset-meta span {
+        font-size: 0.7rem;
+    }
+    
+    .step-item {
+        padding: 10px;
+    }
+    
+    .step-handle {
+        margin-right: 10px;
+        font-size: 1rem;
+    }
+    
+    .step-content {
+        gap: 8px;
+        min-width: 0;
+        flex: 1;
+    }
+    
+    .step-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+    }
+    
+    .step-details {
+        min-width: 0;
+        flex: 1;
+        overflow: hidden;
+    }
+    
+    .step-title {
+        font-size: 0.85rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .step-desc {
+        font-size: 0.75rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .step-actions {
+        gap: 5px;
+    }
+    
+    .step-actions button {
+        font-size: 0.9rem;
+        padding: 4px;
+    }
+    
+    .empty-state {
+        padding: 40px 15px;
+    }
+    
+    .empty-state i {
+        font-size: 3rem;
+    }
+    
+    .empty-state h3 {
+        font-size: 1rem;
+    }
+    
+    .empty-state p {
+        font-size: 0.85rem;
+    }
+    
+    .info p {
+        font-size: 0.9rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    .info ul {
+        padding-left: 15px;
+        font-size: 0.85rem;
+    }
+    
+    .info ul li {
+        margin-bottom: 5px;
+        word-wrap: break-word;
+    }
+    
+    footer {
+        margin-top: 15px;
+        padding-top: 12px;
+        font-size: 0.75rem;
+    }
+    
+    footer p {
+        word-break: break-word;
+    }
+    
+    /* Modal adjustments */
+    .modal {
+        padding: 15px;
+        width: 95%;
+    }
+    
+    .modal h3 {
+        font-size: 1rem;
+    }
+    
+    .form-group label {
+        font-size: 0.85rem;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+    
+    /* Override inline styles */
+    [style*="display: flex"][style*="gap"] {
+        gap: 8px !important;
+    }
+    
+    [style*="flex: 1"] {
+        flex: none !important;
+        width: 100% !important;
+    }
+    
+    /* Fix manual controls paragraph */
+    .manual-controls p[style] {
+        font-size: 0.8rem !important;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 400px) {
+    .container {
+        padding: 8px;
+    }
+    
+    .logo h1 {
+        font-size: 1.1rem;
+    }
+    
+    .status-item {
+        padding: 5px 8px;
+        font-size: 0.75rem;
+    }
+    
+    .timeline-controls .btn {
+        flex: 1 1 100%;
+        padding: 10px;
+    }
+    
+    .speed-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+    }
+    
+    .control-btn span {
+        display: none;
+    }
+    
+    .control-btn i {
+        margin-bottom: 0;
     }
 }
