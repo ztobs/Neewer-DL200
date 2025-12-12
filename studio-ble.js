@@ -48,10 +48,14 @@ function updateStatus(connected) {
         statusItem.classList.remove('disconnected');
         statusItem.classList.add('connected');
         statusItem.querySelector('span').textContent = 'Connected';
+        document.getElementById('connectBtn').disabled = true;
+        document.getElementById('disconnectBtn').disabled = false;
     } else {
         statusItem.classList.remove('connected');
         statusItem.classList.add('disconnected');
         statusItem.querySelector('span').textContent = 'Disconnected';
+        document.getElementById('connectBtn').disabled = false;
+        document.getElementById('disconnectBtn').disabled = true;
         if (heartbeatInterval) {
             clearInterval(heartbeatInterval);
             heartbeatInterval = null;
