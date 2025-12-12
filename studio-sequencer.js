@@ -2,7 +2,7 @@
 
 class Step {
     constructor(type, params) {
-        this.id = Date.now() + Math.random();
+        this.id = (Date.now() + Math.random()).toString();
         this.type = type; // 'moveLeft', 'moveRight', 'wait', 'speed', 'accel', 'loop'
         this.params = params || {};
         this.duration = params.duration || 1000;
@@ -164,6 +164,7 @@ function renderSteps() {
         const li = document.createElement('li');
         li.className = 'step-item';
         li.dataset.id = step.id;
+        li.draggable = true;
         li.innerHTML = `
             <div class="step-handle">
                 <i class="fas fa-grip-vertical"></i>
@@ -222,6 +223,8 @@ function attachStepEvents() {
             removeStep(id);
         });
     });
+    // Attach drag and drop events
+    attachDragEvents();
 }
 
 function highlightCurrentStep(index) {
@@ -417,3 +420,84 @@ window.Sequencer = {
     isPaused: () => isPaused,
     getSteps: () => sequencerSteps
 };
+
+// Drag and drop functionality for steps
+let draggedStepId = null;
+
+function getDragAfterElement(container, y) {
+    const draggableElements = [...container.querySelectorAll('.step-item:not(.dragging)')];
+
+    return draggableElements.reduce((closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+        if (offset < 0 && offset > closest.offset) {
+            return { offset: offset, element: child };
+        } else {
+            return closest;
+        }
+    }, { offset: Number.NEGATIVE_INFINITY }).element;
+}
+
+function attachDragEvents() {
+    const stepsList = document.getElementById('stepsList');
+    if (!stepsList) return;
+
+    const stepItems = stepsList.querySelectorAll('.step-item');
+    
+    stepItems.forEach(item => {
+        item.addEventListener('dragstart', (e) => {
+            draggedStepId = item.dataset.id;
+            item.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/plain', item.dataset.id);
+            setTimeout(() => {
+                item.style.opacity = '0.5';
+            }, 0);
+        });
+
+        item.addEventListener('dragend', (e) => {
+            item.classList.remove('dragging');
+            item.style.opacity = '1';
+            draggedStepId = null;
+            document.querySelectorAll('.step-item').forEach(el => {
+                el.classList.remove('drag-over');
+            });
+        });
+
+        item.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+        });
+
+        item.addEventListener('dragenter', (e) => {
+            e.preventDefault();
+            if (item.dataset.id !== draggedStepId) {
+                item.classList.add('drag-over');
+            }
+        });
+
+        item.addEventListener('dragleave', (e) => {
+            item.classList.remove('drag-over');
+        });
+
+        item.addEventListener('drop', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            if (!draggedStepId || item.dataset.id === draggedStepId) return;
+
+            const draggedIndex = sequencerSteps.findIndex(s => s.id === draggedStepId);
+            const targetIndex = sequencerSteps.findIndex(s => s.id === item.dataset.id);
+
+            if (draggedIndex === -1 || targetIndex === -1) return;
+
+            // Remove the dragged step
+            const [draggedStep] = sequencerSteps.splice(draggedIndex, 1);
+            
+            // Insert at target position
+            sequencerSteps.splice(targetIndex, 0, draggedStep);
+
+            renderSteps();
+        });
+    });
+}

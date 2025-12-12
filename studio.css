@@ -255,7 +255,7 @@ header {
 }
 .step-actions {
     display: flex;
-    gap: 10px;
+    gap: 15px;
 }
 .step-actions button {
     background: none;
@@ -263,6 +263,7 @@ header {
     color: var(--text-muted);
     cursor: pointer;
     font-size: 1rem;
+    padding: 4px 8px;
     transition: color 0.3s;
 }
 .step-actions button:hover {
@@ -1241,4 +1242,15 @@ footer {
     .control-btn i {
         margin-bottom: 0;
     }
+}
+
+/* Drag and drop styles for timeline steps */
+.step-item.dragging {
+    opacity: 0.5;
+    transform: rotate(2deg);
+}
+
+.step-item.drag-over {
+    background-color: rgba(0, 188, 212, 0.1);
+    border-left: 3px solid var(--primary);
 }
